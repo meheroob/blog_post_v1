@@ -5,12 +5,23 @@
 
 <h1>Compose</h1>
 
+
+
 <form method="post" action="/compose">
-    <input type="text" name="newJournalEntry" autocomplete="off">
-    <button type="submit" name="publishButton">Publish</button>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Title</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" name="newJournalTitle" autocomplete="off" required>
+    </div>
 
-</form>
 
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Post</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="newJournalEntry" required>
+      </textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" name="publishButton">Publish</button>
+  </form>
 
 
 

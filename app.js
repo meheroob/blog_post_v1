@@ -16,10 +16,29 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 
+
+
+
+
+// GLOBAL VARIABLES
+
+var journalPosts = [];
+
+// End of GLOBAL VARIABLES
+
+
+
+
+
+
 // Route and deal methods for home route...
 
 app.get("/", function(req,res){
-  res.render('home', {startingContent: homeStartingContent});
+  res.render('home', 
+  {startingContent: homeStartingContent,
+    newJournalPosts: journalPosts
+  });
+
 });
 
 
@@ -55,7 +74,21 @@ app.get("/compose", function(req,res){
 
 
 app.post("/compose", function(req,res){
-  
+  // let newTitle = req.body.newJournalTitle;
+  // let newEntry = req.body.newJournalEntry;
+
+  // console.log(newTitle);
+  // console.log(newEntry);
+
+  const post = {
+    title: req.body.newJournalTitle,
+    content: req.body.newJournalEntry
+  };
+
+  journalPosts.push(post);
+
+
+  res.redirect("/");
 });
 
 
@@ -66,3 +99,6 @@ app.post("/compose", function(req,res){
 app.listen(3000, function() {
   console.log("Server started on port 3000");
 });
+
+
+
